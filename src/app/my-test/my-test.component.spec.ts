@@ -19,7 +19,21 @@ describe('MyTestComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it(`should render 'testContent'`, () => {
+    const fixture = TestBed.createComponent(MyTestComponent);
+    fixture.detectChanges();
+    const testComponent = fixture.debugElement.componentInstance;
+    expect(testComponent.testContent).toEqual('Hello from our service!');
+  });
+
+  it(`should render 'testContent' in second paragraph`, () => {
+    const fixture = TestBed.createComponent(MyTestComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelectorAll('p')[1].textContent).toContain('Hello from our service!');
   });
 });
