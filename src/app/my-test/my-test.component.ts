@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestContentService } from '../test-content.service';
 
 @Component({
   selector: 'app-my-test',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-test.component.css']
 })
 export class MyTestComponent implements OnInit {
+  testContent: string;
 
-  constructor() { }
+  constructor(private testContentService: TestContentService) { }
 
   ngOnInit() {
+    this.testContent = this.testContentService.getContent();
   }
 
 }
